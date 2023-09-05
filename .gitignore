@@ -1,0 +1,9 @@
+venv/
+articles/migrations/0005_alter_articlemodel_category_and_more.py
+articles/migrations/0006_alter_articlemodel_category_and_more.py
+articles/migrations/__pycache__/0005_alter_articlemodel_category_and_more.cpython-310.pyc
+articles/migrations/__pycache__/0006_alter_articlemodel_category_and_more.cpython-310.pyc
+venv/Lib/
+venv/Scripts/django-admin.exe
+venv/Scripts/sqlformat.exe
+venv/pyvenv.cfg
