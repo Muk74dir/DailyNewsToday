@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="text-center mt-5" style="width: 100%;">
+    <h1>{{article.headline}}</h1>
+    <img style="width: 80%; " src="{{article.image.url}}" alt="Image">
+    <div class="mt-3 text-center">
+        <h4>Publieshed in : {{article.publishing_date}}</h4>
+        <h4>Rating : {{article.rating}}</h4>
+        <p>written by : {{article.slug}}</p>
+        <h3>{% lorem 540 w random %}</h3>
+    </div>
+</div>
+{% endblock %}
