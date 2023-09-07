@@ -16,10 +16,9 @@ class ArticleModel(models.Model):
     slug = models.SlugField(max_length=20, unique=True)
     headline = models.CharField(max_length=100)
     description = models.TextField()
-    category = models.CharField(max_length=20, choices=CATEGORY)
     image = models.ImageField(upload_to='articles/images')
     rating = models.CharField(max_length=10, choices=RATING)
     publishing_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.headline
+        return self.slug

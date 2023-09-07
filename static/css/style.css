@@ -119,16 +119,8 @@ button.btn:hover {
 /********* Top Header CSS *********/
 /**********************************/
 .top-header {
-    padding: 15px 0;
     background: #ffffff;
 }
-
-.top-header .logo {
-    text-align: left;
-    overflow: hidden;
-}
-
-
 
 .top-header .search {
     width: 100%;
@@ -223,7 +215,6 @@ button.btn:hover {
 }
 
 .header.header-sticky {
-    position: fixed;
     top: 0;
     width: 100%;
     z-index: 999;

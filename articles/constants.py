@@ -3,8 +3,7 @@ CATEGORY = {
     ('Business', 'Business'),
     ('Sports', 'Sports'),
     ('Health', 'Health'),
-    ('Science', 'Science'),
-    ('Technology', 'Technology'),
+    ('Science & Technology', 'Science & Technology'),
     ('Entertainment', 'Entertainment')
 }
 

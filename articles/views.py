@@ -1,23 +1,23 @@
 from django.shortcuts import render
 from .models import CategoryModel, ArticleModel
 
-def article(request):
-    articles = ArticleModel.objects.all()
-    return render(request, 'index.html', {'articles': articles})
+def home(request):
+    context = {}
+    categories = CategoryModel.objects.order_by('category_name')
+    context['categories']= categories
+
+    for category in categories:
+        top_articles = ArticleModel.objects.filter(category=category).order_by('-rating')[:3]
+        context[category.slug] = top_articles
+    return render(request, 'index.html', context)
+
+
 
 def category(request):
+    context = {}
     categories = CategoryModel.objects.all()
-    articles = ArticleModel.objects.filter(rating="4")
-    latest_articles = ArticleModel.objects.get(category='Latest')
-    top_rated_article = ArticleModel.objects.get(rating='0')
-    relavent_news = ArticleModel.objects.filter(category='Sports')
-    print(relavent_news)
-    return render(request, 'articles/category.html', {
-        'articles': articles, 'categories': categories, 
-        'latest_articles': latest_articles,
-        'top_rated_article': top_rated_article,
-        'relavent_news': relavent_news
-        })
+    context['categories']= categories
+    return render(request, 'articles/category.html', context)
 
 def article_by_category(request, category_slug):
     context = {}
@@ -33,6 +33,9 @@ def article_by_category(request, category_slug):
 
 def article_details(request, category_slug, article_slug):
     context = {}
-    article = ArticleModel.objects.get(slug=article_slug)
-    context['article']= article
+    categories = CategoryModel.objects.order_by('category_name')
+    context['categories']= categories
+    for category in categories:
+        top_articles = ArticleModel.objects.order_by('-rating').filter(category=category)
+        context[category.slug] = top_articles
     return render(request, 'articles/article_details.html', context)
