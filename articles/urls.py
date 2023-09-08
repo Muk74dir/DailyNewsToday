@@ -7,4 +7,5 @@ urlpatterns = [
     path('category/', views.category, name='category'),
     path('category/<slug:category_slug>/', views.article_by_category, name='article_by_category'),
     path('category/<slug:category_slug>/<slug:article_slug>/', views.article_details , name='article_detail'),
+    path('category/<slug:category_slug>/<slug:article_slug>/delete/', views.delete, name='delete')
 ]

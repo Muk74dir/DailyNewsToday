@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import UserRegistrationFrom
+from articles.models import CategoryModel
 from django.contrib.auth import authenticate, login, logout
 
 
@@ -39,4 +40,7 @@ def logout_user(request):
 
 
 def contact(request):
-    return render(request, 'contact.html')
+    context = {}
+    all_categories = CategoryModel.objects.all()
+    context['all_categories']= all_categories
+    return render(request, 'contact.html', context)
