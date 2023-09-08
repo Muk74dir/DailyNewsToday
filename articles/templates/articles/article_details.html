@@ -32,16 +32,19 @@
     </div>
     <h4 class="mt-5 mb-5">{{article.description}}</h4>
     <h1 class="mb-5"><b><u>Relavant Aricles</u></b></h1>
-        <div class="d-flex justify-content-between">
+    <div class="container">
+        <div class="row">
             {% for re_art in relavent_articles %}
-            <div>
-                <img src="{{re_art.image.url}}" alt="" style="width: 200px;"></div>
-            <div>
-                <h3>
-                    <a clas="tn-title" href="{% url 'article_detail' re_art.category.slug re_art.slug %}">{{re_art.headline}}</a>
-                </h3>
+            <div class="col-md-6">
+                <div class="article mb-4">
+                    <img src="{{re_art.image.url}}" alt="" class="img-fluid">
+                    <h3>
+                        <a class="tn-title" href="{% url 'article_detail' re_art.category.slug re_art.slug %}">{{re_art.headline}}</a>
+                    </h3>
+                </div>
             </div>
             {% endfor %}
         </div>
+    </div>    
 </div>
 {% endblock %}
