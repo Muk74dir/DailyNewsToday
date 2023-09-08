@@ -37,7 +37,6 @@ def article_by_category(request, category_slug):
 
 def article_details(request, category_slug, article_slug):
     context = {}
-    rating = request.POST.get('rating')
     all_categories = CategoryModel.objects.all()
     context['all_categories'] = all_categories
 
@@ -55,7 +54,9 @@ def article_details(request, category_slug, article_slug):
 
     
     all_subscriber = UserRegistrationModel.objects.all().count()
-    if rating is not None:
+    rating = request.POST.get('rating')
+    user = request.user
+    if rating is not None and user.is_authenticated:
         article.rating = (int(rating)//(all_subscriber))
         article.save()
         context['article']= article
