@@ -22,8 +22,9 @@ def user_login(request):
 
 
 def subscribe(request):
-    form = UserRegistrationFrom()
+    context = {}
     Error = ''
+    form = UserRegistrationFrom()
     if request.method == 'POST':
         form = UserRegistrationFrom(request.POST)
         if form.is_valid():
@@ -31,7 +32,9 @@ def subscribe(request):
             return redirect('login')
         else:
             Error = 'Fill the form correctly'
-    return render(request, 'accounts/subscribe.html', {'Error': Error})
+    context['form'] = form
+    context['Error'] = Error
+    return render(request, 'accounts/subscribe.html', context)
 
 
 def logout_user(request):

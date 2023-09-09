@@ -11,25 +11,33 @@
                 <h2 class="text-center">Sign Up</h2>
                 <form method="POST">
                     {% csrf_token %}
-                    {% for hidden_field in form.hidden_fields %} 
-                    {{ hidden_field.errors }} 
-                    {{ hidden_field }} 
-                    {% endfor %}
                     <div class="form-group">
-                        <label for="fullname">Username</label>
+                        <label for="firstname">username</label>
                         <input type="text" class="form-control" id="fullname" placeholder="Enter your username" name='username'>
+                        {% if form.username.errors %}{% for error in form.username.errors %} 
+                        <p class="text-danger">* {{ error }}</p> 
+                        {% endfor %}{% endif %}
                     </div>
                     <div class="form-group">
-                        <label for="fullname">First Name</label>
-                        <input type="text" class="form-control" id="fullname" placeholder="Enter your full name" name="first_name">
+                        <label for="first_name">First Name</label>
+                        <input type="text" class="form-control" id="first_name" placeholder="Enter your first name" name="first_name">
+                        {% if form.first_name.errors %}{% for error in form.first_name.errors %} 
+                        <p class="text-danger">* {{ error }}</p> 
+                        {% endfor %}{% endif %}
                     </div>
                     <div class="form-group">
-                        <label for="fullname">Last Name</label>
-                        <input type="text" class="form-control" id="fullname" placeholder="Enter your full name" name="last_name">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" class="form-control" id="last_name" placeholder="Enter your last name" name="last_name">
+                        {% if form.last_name.errors %}{% for error in form.last_name.errors %} 
+                        <p class="text-danger">* {{ error }}</p> 
+                        {% endfor %}{% endif %}
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
                         <input type="email" class="form-control" id="email" placeholder="Enter your email address" name="email">
+                        {% if form.email.errors %}{% for error in form.email.errors %} 
+                        <p class="text-danger">* {{ error }}</p> 
+                        {% endfor %}{% endif %}
                     </div>
                     <div class="form-group">
                         <label for="account_type">Account Type</label>
@@ -37,6 +45,9 @@
                             <option value="Subscriber">Subscriber</option>
                             <option value="Editor">Editor</option>
                         </select>
+                        {% if form.account_type.errors %}{% for error in form.account_type.errors %} 
+                        <p class="text-danger">* {{ error }}</p> 
+                        {% endfor %}{% endif %}
                     </div>
                     <div class="form-group">
                         <label for="account_type">Gender</label>
@@ -44,22 +55,37 @@
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
+                        {% if form.gender.errors %}{% for error in form.gender.errors %} 
+                        <p class="text-danger">* {{ error }}</p> 
+                        {% endfor %}{% endif %}
                     </div>
                     <div class="form-group">
                         <label for="birthdate">Date of Birth</label>
                         <input type="date" class="form-control" id="birthdate" placeholder="Enter your date of birth" name="birth_date">
+                        {% if form.birthdate.errors %}{% for error in form.birthdate.errors %} 
+                        <p class="text-danger">* {{ error }}</p> 
+                        {% endfor %}{% endif %}
                     </div>                    
                     <div class="form-group">
-                        <label for="fullname">Mobile</label>
-                        <input type="text" class="form-control" id="fullname" placeholder="Enter your phone number" name="phone_number">
+                        <label for="phone_number">Mobile</label>
+                        <input type="text" class="form-control" id="phone_number" placeholder="Enter your phone number" name="phone_number">
+                        {% if form.phone_number.errors %}{% for error in form.phone_number.errors %} 
+                        <p class="text-danger">* {{ error }}</p> 
+                        {% endfor %}{% endif %}
                     </div>                   
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password1">
+                        {% if form.password1.errors %}{% for error in form.password1.errors %} 
+                        <p class="text-danger">* {{ error }}</p> 
+                        {% endfor %}{% endif %}
                     </div>
                     <div class="form-group">
                         <label for="password">Confirm Password</label>
                         <input type="password" class="form-control" id="password" placeholder="Confirm your password" name="password2">
+                        {% if form.password2.errors %}{% for error in form.password2.errors %} 
+                        <p class="text-danger">* {{ error }}</p> 
+                        {% endfor %}{% endif %}
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
                 </form>
